@@ -1,29 +1,19 @@
-baseline:
-  input_dim: 4
-  seq_len: 129
-  num_classes: 1
-  num_channels: 100
-  dropout: 0.5
-  lr: 0.0001
+# Base training config
+base:
   epochs: 50
   patience: 5
-  save_path: './models/best_model.pt'
   device: 'cuda'
-  batch_size: 64
-  trade_off_trsr: 1
-  loss_fn: 'focal'
-  optimizer: 'adam'
-  dropout_rate: 0.1
-transyn:
-  epochs: 50
-  patience: 5
-  save_path: './models/best_model.pt'
-  device: 'cuda'
-  lr: 0.00038089211244930033
-  trade_off_trsr: 1
-  batch_size: 32
-  optimizer: 'adam'
-  loss_fn: 'focal'
-  bio_hidden: 128
-  dropout_rate: 0.3
-  head_hidden: 64
+  LEARNING_RATE: 0.0001
+  LOSS_FN: 'bce'
+  OPTIMIZE: 'adam'
+
+# Storage the best hyper-parameter settings from Optuna
+GPN_CaLM_NewBio:
+  LEARNING_RATE: 0.0006797869519493327
+  TRADE_OFF_TRSR: 1
+  BATCH_SIZE: 32
+  OPTIMIZE: 'adam'
+  LOSS_FN: 'bce'
+  BIO_HIDDEN: 64
+  DROPOUT_RATE: 0.1
+  HEAD_HIDDEN: 256

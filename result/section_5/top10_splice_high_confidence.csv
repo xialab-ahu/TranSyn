@@ -1,0 +1,11 @@
+Variant38,TranSyn_score,gene,SpliceAI_don_gain,SpliceAI_don_loss,disease_info
+11_47343494_G/A,0.9983,MYBPC3,0.95,0.91,"disease=hypertrophic cardiomyopathy,mondo_id=MONDO:0005045,moi=AD"
+19_38561454_G/A,0.9982,RYR1,0.0,0.97,"disease=malignant hyperthermia, susceptibility to, 1,mondo_id=MONDO:0007783,moi=AD|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AR|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AD"
+2_47796063_G/A,0.9975,MSH6,0.59,0.98,"disease=mismatch repair cancer syndrome 1,mondo_id=MONDO:0010159,moi=AR|disease=Lynch syndrome,mondo_id=MONDO:0005835,moi=AD"
+11_64805034_C/T,0.9973,MEN1,0.46,0.91,"disease=multiple endocrine neoplasia type 1,mondo_id=MONDO:0007540,moi=AD"
+1_55061556_G/A,0.9973,PCSK9,0.47,0.96,"disease=hypercholesterolemia, autosomal dominant, 3,mondo_id=MONDO:0011369,moi=AD"
+13_32379913_G/C,0.9973,BRCA2,0.01,0.91,"disease=Fanconi anemia complementation group D1,mondo_id=MONDO:0011584,moi=AR|disease=BRCA2-related cancer predisposition,mondo_id=MONDO:0700269,moi=AD"
+5_112755025_G/A,0.9969,APC,0.0,0.98,"disease=gastric adenocarcinoma and proximal polyposis of the stomach,mondo_id=MONDO:0017790,moi=AD|disease=classic or attenuated familial adenomatous polyposis,mondo_id=MONDO:0021057,moi=AD"
+18_31086576_C/T,0.9968,DSC2,0.0,0.98,"disease=familial isolated arrhythmogenic right ventricular dysplasia,mondo_id=MONDO:0016342,moi=AD"
+15_48496101_T/C,0.9934,FBN1,0.97,0.03,"disease=Marfan syndrome,mondo_id=MONDO:0007947,moi=AD|disease=familial thoracic aortic aneurysm and aortic dissection,mondo_id=MONDO:0019625,moi=AD"
+19_38469079_C/T,0.9928,RYR1,0.97,0.0,"disease=malignant hyperthermia, susceptibility to, 1,mondo_id=MONDO:0007783,moi=AD|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AR|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AD"

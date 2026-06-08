@@ -1,0 +1,196 @@
+# —————————————————————— [Missense source] ——————————————————————
+missense-GPN-MSA:
+  feature_name: "gpn_msa"
+  source_root: "/00-LLM-tools/B-GPNMSA/demo/missense/"
+  source_pt: "train_pos_51936_129.pth"
+  source_bn: "train_neg_51936_129.pth"
+  source_data_type: "torch"
+  target_root: "/feature/bio_merge/"
+  target_pt: "test_pos_diff_with_nt.pth"
+  target_bn: "test_neg_diff_with_nt.pth"
+  target_data_type: "torch"
+  seq_len: 129
+  embed_dim: 768
+
+missense-RiNALMo:
+  feature_name: "ref_rinalmo"
+  source_root: "/00-LLM-tools/N-RiNALMo/RiNALMo-main/demo/"
+  source_pt: "missense-pt/RiNALMo.lmdb/"
+  source_bn: "missense-bn/RiNALMo.lmdb/"
+  source_data_type: "lmdb"
+  target_root: "/00-LLM-tools/N-RiNALMo/RiNALMo-main/demo/"
+  target_pt: "synonymous-test-bn/RiNALMo.lmdb/"
+  target_bn: "synonymous-test-bn/RiNALMo.lmdb/"
+  target_data_type: "lmdb"
+  seq_len: 131
+  embed_dim: 1280
+
+missense-ISM:
+  feature_name: "ism_feature"
+  seq_len: 43
+  embed_dim: 1280
+  source_root: "/00-LLM-tools/B-GPNMSA/demo/missense/"
+  source_pt: "train_pos_51936_129.pth"
+  source_bn: "train_neg_51936_129.pth"
+  source_data_type: "torch"
+  target_root: "/dataset_target/ism/"
+  target_pt: "test_pos_119_21aa.pt"
+  target_bn: "test_neg_119_21aa.pt"
+  target_data_type: "torch"
+
+missense-CaLM:
+  feature_name: "calm_ref_feature"
+  source_root: "/00-LLM-tools/F-CaLM/demo/missense/"
+  source_pt: "bn_merged_diff_nodmq/"
+  source_bn: "pt_merged_diff_nodmq/"
+  source_data_type: "lmdb"
+  target_root: "/dataset_target/calm/unaverage_result/"
+  target_pt: "test_pos_119_21_with_diff.pth"
+  target_bn: "test_neg_119_21_with_diff.pth"
+  target_data_type: "torch"
+  seq_len: 45
+  embed_dim: 768
+
+missense-NT:
+  feature_name: "ref_nt"
+  source_root: "/00-LLM-tools/E-NT/demo/missense/"
+  source_pt: "pt/Nucleotide-Transformer.lmdb/"
+  source_bn: "bn/Nucleotide-Transformer.lmdb/"
+  source_data_type: "lmdb"
+  target_root: "/00-LLM-tools/E-NT/demo/synonymous-test/"
+  target_pt: "pt/Nucleotide-Transformer.lmdb/"
+  target_bn: "bn/Nucleotide-Transformer.lmdb/"
+  target_data_type: "lmdb"
+  seq_len: 129
+  embed_dim: 2560
+
+missense-ERNIE-RNA:
+  feature_name: "ref_ernie_rna"
+  source_root: "/00-LLM-tools/L-ERNIE-RNA/"
+  source_pt: "missense-pt/ERNIE-RNA.lmdb/"
+  source_bn: "missense-bn/ERNIE-RNA.lmdb/"
+  source_data_type: "lmdb"
+  target_root: "/00-LLM-tools/L-ERNIE-RNA/synonymous/"
+  target_pt: "test.pt.pth"
+  target_bn: "test.bn.pth"
+  target_data_type: "torch"
+  seq_len: 131
+  embed_dim: 768
+
+missense-SpliceBERT:
+  feature_name: "ref_splicebert"
+  source_root: "/00-LLM-tools/M-SpliceBERT/"
+  source_pt: "missense-pt/SpliceBERT.lmdb/"
+  source_bn: "missense-bn/SpliceBERT.lmdb/"
+  source_data_type: "lmdb"
+  target_root: "/00-LLM-tools/M-SpliceBERT/"
+  target_pt: "synonymous-test-pt/SpliceBERT.lmdb/"
+  target_bn: "synonymous-test-bn/SpliceBERT.lmdb/"
+  target_data_type: "lmdb"
+  seq_len: 131
+  embed_dim: 512
+
+missense-onehot-DNA:
+  feature_name: "ref_1h"
+  seq_len: 129
+  embed_dim: 4
+  source_root: "/dataset_missense_nodmq/One-hot-DNA/"
+  source_pt: "onehot.pt.pth"
+  source_bn: "onehot.bn.pth"
+  source_data_type: "torch"
+  target_root: "/dataset_target/One-hot-DNA/"
+  target_pt: "test.onehot.pt.pth"
+  target_bn: "test.onehot.bn.pth"
+  target_data_type: "torch"
+  
+missense-onehot-RNA:
+  feature_name: "ref_1h"
+  source_root: "/dataset_missense_nodmq/One-hot-RNA/"
+  source_pt: "onehot.pt.pth"
+  source_bn: "onehot.bn.pth"
+  source_data_type: "torch"
+  target_root: "/dataset_target/One-hot-RNA/"
+  target_pt: "test.onehot.pt.pth"
+  target_bn: "test.onehot.bn.pth"
+  target_data_type: "torch"
+  seq_len: 129
+  embed_dim: 4
+
+missense-onehot-protein:
+  feature_name: "ref_1h" 
+  source_root: "/dataset_missense_nodmq/One-hot-protein/"
+  source_pt: "onehot.pt.pth"
+  source_bn: "onehot.bn.pth"
+  source_data_type: "torch"
+  target_root: "/dataset_target/One-hot-protein/"
+  target_pt: "test.onehot.pos.pth"
+  target_bn: "test.onehot.neg.pth"
+  target_data_type: "torch"
+  seq_len: 43
+  embed_dim: 21 # 20 nature aa + 1 unknown aa
+
+# —————————————————————— [Noncoding source] ——————————————————————
+noncoding-GPN-MSA:
+  feature_name: "gpn_msa"
+  source_root: "/dataset_noncoding_v2/llm/"
+  source_pt: "GPNMSA_output_noncoding_pos_129bp.pth"
+  source_bn: "GPNMSA_output_noncoding_neg_129bp.pth"
+  source_data_type: "torch"
+  target_root: "/dataset_target/gpn_msa/"
+  target_pt: "test_pos_119_129.pth"
+  target_bn: "test_neg_119_129.pth" 
+  target_data_type: "torch"
+  seq_len: 129
+  embed_dim: 768
+
+noncoding-HyenaDNA:
+  feature_name: "ref_hyena-dna"
+  seq_len: 129
+  embed_dim: 128
+  source_root: "/dataset_noncoding_v2/llm/"
+  source_pt: "Noncoding-pt-hyena-DNA.pth"
+  source_bn: "Noncoding-bn-hyena-DNA.pth"
+  source_data_type: "torch"
+  target_root: "/dataset_target/llm/"
+  target_pt: "Synonymous-test-pt-hyena-DNA.pth"
+  target_bn: "Synonymous-test-bn-hyena-DNA.pth" 
+  target_data_type: "torch"
+
+noncoding-NT:
+  feature_name: "ref_nt"
+  source_root: "/00-LLM-tools/E-NT/demo/noncoding/"
+  source_pt: "pt/Nucleotide-Transformer.lmdb/"
+  source_bn: "bn/Nucleotide-Transformer.lmdb/"
+  source_data_type: "lmdb"
+  target_root: "/00-LLM-tools/E-NT/demo/synonymous-test/"
+  target_pt: "pt/Nucleotide-Transformer.lmdb/"
+  target_bn: "bn/Nucleotide-Transformer.lmdb/"
+  target_data_type: "lmdb"
+  seq_len: 129
+  embed_dim: 2560
+
+noncoding-alphagenome:
+  feature_name: "alphag_alt"
+  source_root: "/00-LLM-tools/E-NT/AlphaGenome/noncoding/"
+  source_pt: "noncoding.pt.cleaned.62593.ag.pth"
+  source_bn: "noncoding.bn.cleaned.62593.ag.pth"
+  source_data_type: "torch"
+  target_root: "/00-LLM-tools/E-NT/AlphaGenome/target/"
+  target_pt: "test_pos_119.ag.pth"
+  target_bn: "test_neg_119.ag.pth"
+  target_data_type: "torch"
+  seq_len: 129
+  embed_dim: 1536
+
+noncoding-onehot-DNA:
+  feature_name: "ref_1h"
+  source_root: "/dataset_noncoding_v2/naive_sequence/onehot/"
+  source_pt: "onehot.pt.pth"
+  source_bn: "onehot.bn.pth"
+  source_data_type: "torch"
+  target_root: "/dataset_target/onehot/"
+  target_pt: "test.onehot.pt.pth"
+  target_bn: "test.onehot.bn.pth"
+  target_data_type: "torch"
+  seq_len: 129
+  embed_dim: 4

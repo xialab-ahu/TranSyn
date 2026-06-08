@@ -1,35 +1,29 @@
 # TranSyn
 
-## 1 Introduction
+## 0 🌐 Access TranSyn Prediction
 
-TranSyn is a deep transfer learning framework for predicting the functional impact of synonymous variants.
+We provide genome-wide predictions on actionable genes using TranSyn and a web server to visualize the results. Access it here: [TranSyn Web Server](https://bioinfo.ahu.edu.cn/TranSyn).
 
-Although synonymous variants do not change encoded amino acids, they can affect multiple molecular mechanisms, including splicing, translation efficiency, and protein conformation, and may therefore contribute to disease. Accurate prediction of functional synonymous variants remains challenging, largely due to the limited availability of labeled pathogenic samples.
+![Figure1](asset\WebSerber-header.jpg)
 
-In contrast, noncoding and missense variants have relatively abundant annotations. However, existing methods rarely exploit transferable knowledge from these variants to improve synonymous variant prediction.
+## 1 📢 Introduction
 
-To address this limitation, we propose **TranSyn**, a transfer learning framework that integrates:
+**TranSyn** is a deep transfer learning framework for predicting the functional impact of synonymous variants.  
 
-- deep representations derived from foundation models pretrained on noncoding and missense variants (source domains)
-- biologically informed handcrafted features
+Although synonymous variants do not change the amino acid sequence, they can influence splicing, translation efficiency, and protein structure, potentially contributing to disease. Accurate prediction remains challenging due to limited labeled pathogenic samples.  
 
-Experimental results demonstrate that TranSyn achieves **state-of-the-art performance** in deleterious synonymous variant prediction. Comparative analyses confirm the effectiveness of transferring knowledge from both noncoding and missense variants, with consistent improvements across different training set sizes and particularly strong gains under **small-sample conditions**.
+TranSyn addresses this by integrating:
 
-Ablation studies further show that deep representations provide complementary information beyond handcrafted features. Finally, we perform genome-wide inference on actionable genes and investigate potential mechanisms underlying synonymous variant pathogenicity.
+- Deep representations from foundation models pretrained on noncoding and missense variants  
+- Biologically informed handcrafted features  
 
-![Figure1](https://github.com/user-attachments/assets/fc8d4f94-98d5-48e9-9a3f-b4365b9544f0)
+Experiments demonstrate that TranSyn achieves state-of-the-art performance, effectively transferring knowledge from related variant types and showing particularly strong gains under small-sample conditions. Genome-wide inference on actionable genes further highlights potential mechanisms of synonymous variant pathogenicity.
+
+![Figure1](asset\Framework.jpg)
 
 ---
 
-## 2 Installation
-
-### 2.1 Dataset and Features
-
-1. Target feature files can be downloaded from figshare: 10.6084/m9.figshare.31526149.
-
-**Note:** Source-domain features are very large (~100GB in total), please contact me if you want to download them.
-
-2. Environment Setup
+## 2 🧱 Installation
 
 Create the conda environment:
 
@@ -38,29 +32,32 @@ conda env create -f environment.yml
 conda activate transyn
 ```
 
-Run the model:
+## 3 📈 Reproducibility
 
-```bash
-python main.py
-```
+We provide instructions to reproduce all figures and tables from the paper.
 
-## 3 Results
+1. **Section II:** Comparison with other VEPs | `Figure 2`
+   1. `main.py`: Obtain the best model. Run directly: `python main.py`.
+   2. Result-section-II.ipynb: Compare with other VEPs.
+2. **Section III:** Improvement from transfer knowledge | `Figure 3`
+   1. `main.py`: Sample efficiency experiments.
+   2. `layer_wise.py`: Layer-wise transfer experiment. Run directly: `python layer_wise.py`.
+   3. `Result-section-III-NearBy-Source.ipynb`: Re-select source domains and evaluate improvement.
+   4. `Result-section-III.ipynb`: Result visualization.
+3. **Section IV:** Contribution from foundation models | `Figure 4`
+   1. `pretrain.py`: Pretraining with one-hot features and deep representations.
+   2. `finetune.py`: Fine-tuning with one-hot features and deep representations.
+   3. `ablation.py`: Ablation experiments. Run directly: `python ablation.py`.
+   4. `zeroshot.py`: Zero-shot prediction using foundation models.
+   5. 4. `Result-section-IV.ipynb`: Result visualization.
+4. **Section V:** Inference on actionable genes | `Figure 5`
+   1. `Result-section-V.ipynb`: Analysis and visualization.
 
-Key outputs are stored in the following directories:
 
-| Content                     | Path                                                                        |
-| --------------------------- | --------------------------------------------------------------------------- |
-| Pretrained weights          | `./model_weight/pretrained/`                                                |
-| Final trained model         | `./model_weight/model.pt`                                                   |
-| Actionable gene predictions | `./result/actionable_inference_results/ACMG.actionable.genes.GRCh38.vcf.gz` |
+## 4 🧾 Citation
 
-## 4 Citation
+> In preparation.
 
-```citaion
-The manuscript describing TranSyn is currently in preparation.
-Citation information will be provided after publication.
-```
+## 5 📩 Contact
 
-## 5 Contact
-
-For questions or issues, please feel free to open an `Issue` in this repository.
+> For questions or issues, please open an `Issue` in this repository.

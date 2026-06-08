@@ -1,0 +1,131 @@
+GPN-MSA:
+  feature_name: "gpn_msa"
+  seq_len: 129
+  embed_dim: 768
+  data_type: "torch"
+  data_root: "/dataset_target/gpn_msa/"
+  train_pt: "train_pos_1181_129.pth"
+  train_bn: "train_neg_1181_129.pth"
+  test_pt: "test_pos_119_129.pth"
+  test_bn: "test_neg_119_129.pth"
+
+CaLM:
+  feature_name: "calm_alt_feature"
+  seq_len: 45
+  embed_dim: 768
+  data_type: "torch"
+  data_root: "/dataset_target/calm/unaverage_result/"
+  train_pt: "train_pos_1181_21_with_diff.pth"
+  train_bn: "train_neg_1181_21_with_diff.pth"
+  test_pt: "test_pos_119_21_with_diff.pth"
+  test_bn: "test_neg_119_21_with_diff.pth"
+
+ERNIE-RNA:
+  feature_name: "ref_ernie_rna"
+  seq_len: 131
+  embed_dim: 768
+  data_type: "lmdb"
+  data_root: "/00-LLM-tools/L-ERNIE-RNA/"
+  train_pt: "synonymous-train-pt/ERNIE-RNA.lmdb"
+  train_bn: "synonymous-train-bn/ERNIE-RNA.lmdb"
+  test_pt: "synonymous-test-pt/ERNIE-RNA.lmdb"
+  test_bn: "synonymous-test-bn/ERNIE-RNA.lmdb"
+
+SpliceBERT:
+  feature_name: "ref_splicebert"
+  seq_len: 131
+  embed_dim: 512
+  data_type: "lmdb"
+  data_root: "/00-LLM-tools/M-SpliceBERT/"
+  train_pt: "synonymous-DNA-train-pt/SpliceBERT.lmdb/"
+  train_bn: "synonymous-DNA-train-bn/SpliceBERT.lmdb/"
+  test_pt: "synonymous-DNA-test-pt/SpliceBERT.lmdb/"
+  test_bn: "synonymous-DNA-test-bn/SpliceBERT.lmdb/"
+
+NT:
+  feature_name: "ref_nt"
+  seq_len: 129
+  embed_dim: 2560
+  data_type: "lmdb"
+  data_root: "/00-LLM-tools/E-NT/demo/"
+  train_pt: "synonymous-train/pt/Nucleotide-Transformer.lmdb/"
+  train_bn: "synonymous-train/bn/Nucleotide-Transformer.lmdb/"
+  test_pt: "synonymous-test/pt/Nucleotide-Transformer.lmdb/"
+  test_bn: "synonymous-test/bn/Nucleotide-Transformer.lmdb/"
+
+onehot-DNA:
+  feature_name: "ref_1h"
+  seq_len: 129
+  embed_dim: 4
+  data_type: "torch"
+  data_root: "/dataset_target/One-hot-DNA/"
+  train_pt: "train.onehot.pt.pth"
+  train_bn: "train.onehot.bn.pth"
+  test_pt: "test.onehot.pt.pth"
+  test_bn: "test.onehot.bn.pth"
+
+onehot-RNA:
+  feature_name: "ref_1h"
+  seq_len: 129
+  embed_dim: 4
+  data_type: "torch"
+  data_root: "/dataset_target/One-hot-RNA/"
+  train_pt: "train.onehot.pt.pth"
+  train_bn: "train.onehot.bn.pth"
+  test_pt: "test.onehot.pt.pth"
+  test_bn: "test.onehot.bn.pth"
+
+onehot-protein:
+  feature_name: "ref_1h"
+  seq_len: 43
+  embed_dim: 21
+  data_type: "torch"
+  data_root: "/dataset_target/One-hot-protein/"
+  train_pt: "train.onehot.pos.pth"
+  train_bn: "train.onehot.neg.pth"
+  test_pt: "test.onehot.pos.pth"
+  test_bn: "test.onehot.neg.pth"
+
+HyenaDNA:
+  feature_name: "ref_hyena-dna"
+  seq_len: 131
+  embed_dim: 128
+  data_type: "torch"
+  data_root: "/dataset_target/llm/"
+  train_pt: "Synonymous-train-pt-hyena-DNA.pth"
+  train_bn: "Synonymous-train-bn-hyena-DNA.pth"
+  test_pt: "Synonymous-test-pt-hyena-DNA.pth"
+  test_bn: "Synonymous-test-bn-hyena-DNA.pth"
+
+Alphagenome:
+  feature_name: "alphag_alt"
+  seq_len: 128
+  embed_dim: 1536
+  data_type: "single"
+  data_root: "/dataset_target/AlphaGenome/"
+  train_pt: "train_pos_1181_129bp.ag.pth"
+  train_bn: "train_neg_1181_129bp.ag.pth"
+  test_pt: "test_pos_119_129bp.ag.pth"
+  test_bn: "test_neg_119_129bp.ag.pth"
+
+ISM:
+  feature_name: "ism_feature"
+  seq_len: 43
+  embed_dim: 1280
+  data_type: "torch"
+  data_root: "/dataset_target/ism/"
+  train_pt: "train_pos_1181_21aa.pt"
+  train_bn: "train_neg_1181_21aa.pt"
+  test_pt: "test_pos_119_21aa.pt"
+  test_bn: "test_neg_119_21aa.pt"
+
+RiNALMo:
+  feature_name: "ref_rinalmo"
+  seq_len: 131
+  embed_dim: 1280
+  data_type: "lmdb"
+  data_root: "/RiNALMo-main/demo/"
+  train_pt: "synonymous-train-pt/RiNALMo.lmdb/"
+  train_bn: "synonymous-train-bn/RiNALMo.lmdb/"
+  test_pt: "synonymous-test-pt/RiNALMo.lmdb/"
+  test_bn: "synonymous-test-bn/RiNALMo.lmdb/"

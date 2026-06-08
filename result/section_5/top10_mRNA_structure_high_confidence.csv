@@ -1,0 +1,12 @@
+Variant38,TranSyn_score,gene,delta_MFE,disease_info
+19_38475450_G/A,0.9981,RYR1,4.900000000000006,"disease=malignant hyperthermia, susceptibility to, 1,mondo_id=MONDO:0007783,moi=AD|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AR|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AD"
+1_55061556_G/A,0.9973,PCSK9,6.399999999999999,"disease=hypercholesterolemia, autosomal dominant, 3,mondo_id=MONDO:0011369,moi=AD"
+18_31541314_G/A,0.9969,DSG2,5.700000000000003,"disease=arrhythmogenic right ventricular cardiomyopathy,mondo_id=MONDO:0016587,moi=AD"
+12_32850767_T/A,0.9961,PKP2,-4.600000000000001,"disease=arrhythmogenic right ventricular cardiomyopathy,mondo_id=MONDO:0016587,moi=AD"
+16_2056244_G/A,0.9956,TSC2,6.200000000000003,"disease=tuberous sclerosis,mondo_id=MONDO:0001734,moi=AD"
+11_2778037_G/A,0.9942,KCNQ1,6.600000000000001,"disease=Jervell and Lange-Nielsen syndrome,mondo_id=MONDO:0002441,moi=AR|disease=long QT syndrome,mondo_id=MONDO:0002442,moi=AD"
+22_29604067_C/G,0.9935,NF2,-4.100000000000001,"disease=neurofibromatosis type 2,mondo_id=MONDO:0007039,moi=AD"
+15_48496101_T/C,0.9934,FBN1,-6.600000000000001,"disease=Marfan syndrome,mondo_id=MONDO:0007947,moi=AD|disease=familial thoracic aortic aneurysm and aortic dissection,mondo_id=MONDO:0019625,moi=AD"
+1_201047526_T/C,0.9917,CACNA1S,-4.299999999999997,
+18_31598570_G/A,0.9847,TTR,4.100000000000001,"disease=obsolete hereditary ATTR amyloidosis,mondo_id=MONDO:0017132,moi=AD"
+10_87925513_G/A,0.976,PTEN,6.700000000000003,"disease=PTEN hamartoma tumor syndrome,mondo_id=MONDO:0017623,moi=AD"

@@ -1,0 +1,11 @@
+Variant38,TranSyn_score,gene,delta_gtai,delta_fr,disease_info
+6_7562780_G/A,0.9979,DSP,-0.2101293103448276,-31.57123049844862,"disease=arrhythmogenic cardiomyopathy with wooly hair and keratoderma,mondo_id=MONDO:0011581,moi=AD"
+22_29671948_G/A,0.9966,NF2,-0.2101293103448276,-31.57123049844862,"disease=neurofibromatosis type 2,mondo_id=MONDO:0007039,moi=AD"
+3_38587400_C/T,0.9964,SCN5A,-0.2101293103448276,-31.57123049844862,"disease=SCN5A-related cardiac rhythm disorder,mondo_id=MONDO:1010181,moi=AD|disease=dilated cardiomyopathy 1E,mondo_id=MONDO:0011003,moi=AD"
+13_32397044_G/A,0.9918,BRCA2,-0.2101293103448276,-31.57123049844862,"disease=Fanconi anemia complementation group D1,mondo_id=MONDO:0011584,moi=AR|disease=BRCA2-related cancer predisposition,mondo_id=MONDO:0700269,moi=AD"
+17_7676382_C/T,0.9838,TP53,-0.2101293103448276,-31.57123049844862,"disease=Li-Fraumeni syndrome,mondo_id=MONDO:0018875,moi=AD"
+6_7569338_C/T,0.9716,DSP,-0.93359375,-1.587082367774224,"disease=arrhythmogenic cardiomyopathy with wooly hair and keratoderma,mondo_id=MONDO:0011581,moi=AD"
+3_38606092_C/T,0.9658,SCN5A,-0.2101293103448276,-31.57123049844862,"disease=SCN5A-related cardiac rhythm disorder,mondo_id=MONDO:1010181,moi=AD|disease=dilated cardiomyopathy 1E,mondo_id=MONDO:0011003,moi=AD"
+19_38517621_G/A,0.9564,RYR1,-0.2101293103448276,-31.57123049844862,"disease=malignant hyperthermia, susceptibility to, 1,mondo_id=MONDO:0007783,moi=AD|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AR|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AD"
+19_38535390_C/T,0.9523,RYR1,-0.93359375,-1.587082367774224,"disease=malignant hyperthermia, susceptibility to, 1,mondo_id=MONDO:0007783,moi=AD|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AR|disease=RYR1-related myopathy,mondo_id=MONDO:0100150,moi=AD"
+15_48467987_C/T,0.9303,FBN1,-0.2101293103448276,-31.57123049844862,"disease=Marfan syndrome,mondo_id=MONDO:0007947,moi=AD|disease=familial thoracic aortic aneurysm and aortic dissection,mondo_id=MONDO:0019625,moi=AD"
