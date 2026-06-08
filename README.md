@@ -4,7 +4,7 @@
 
 We provide genome-wide predictions on actionable genes using TranSyn and a web server to visualize the results. Access it here: [TranSyn Web Server](https://bioinfo.ahu.edu.cn/TranSyn).
 
-![Figure1](asset\WebSerber-header.jpg)
+![Figure1](asset/WebSerber-header.jpg)
 
 ## 1 📢 Introduction
 
@@ -19,7 +19,7 @@ TranSyn addresses this by integrating:
 
 Experiments demonstrate that TranSyn achieves state-of-the-art performance, effectively transferring knowledge from related variant types and showing particularly strong gains under small-sample conditions. Genome-wide inference on actionable genes further highlights potential mechanisms of synonymous variant pathogenicity.
 
-![Figure1](asset\Framework.jpg)
+![Figure1](asset/Framework.jpg)
 
 ---
 
