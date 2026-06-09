@@ -2,7 +2,7 @@
 
 ## 0 🌐 Access TranSyn Prediction
 
-We provide genome-wide predictions on actionable genes using TranSyn and a web server to visualize the results. Access it here: [TranSyn Web Server](https://bioinfo.ahu.edu.cn/TranSyn).
+We provide genome-wide predictions on actionable genes using TranSyn and a web server to visualize the results. Access it here: [TranSyn Web Server](https://bioinfo.ahu.edu.cn/transyn/).
 
 ![Figure1](asset/WebSerber-header.jpg)
 
