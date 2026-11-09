@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 @description: quantify the maximum overlap between variant contexts
 @author: chen ye

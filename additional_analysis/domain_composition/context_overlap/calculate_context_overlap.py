@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 @description: calculate overlap between 129-bp variant contexts
 @author: chen ye

@@ -1,23 +1,24 @@
 extractors:
   biological:
-    working_directory: /path/to/TranSyn/feature_extraction
+    working_directory: "{config_dir}"
     command:
       - conda
       - run
       - --no-capture-output
       - -n
-      - drp-psm
+      - bio_feature
       - python
-      - 1-retrieve-biology.py
+      - 4-Retrieve-biology.py
       - --input_file
       - "{input}"
       - --task_dir
       - "{output_dir}"
       - --resource_config
-      - /path/to/local.biological-resources.yaml
+      - "{config_dir}/local.biological-resources.yaml"
     output: "{output_dir}/biological.raw.txt"
+    required_modules: [numpy, pandas, sklearn, joblib, yaml]
   gpn_msa:
-    working_directory: /path/to/TranSyn/feature_extraction
+    working_directory: "{config_dir}"
     command:
       - conda
       - run
@@ -25,7 +26,7 @@ extractors:
       - -n
       - GPNMSA
       - python
-      - 1-Local-retrieve-GPN-MSA-Bulk.py
+      - 2-Retrieve-GPN-MSA-Embeddings.py
       - --input_file
       - "{input}"
       - --task_dir
@@ -35,8 +36,9 @@ extractors:
       - --msa_path
       - /path/to/downloaded/GPN-MSA/89.zarr.zip
     output: "{output_dir}/GPN_MSA.pth"
+    required_modules: [torch, gpn, transformers, lmdb]
   codon_context:
-    working_directory: /path/to/TranSyn/feature_extraction
+    working_directory: "{config_dir}"
     command:
       - conda
       - run
@@ -44,14 +46,15 @@ extractors:
       - -n
       - calm
       - python
-      - 2-retrieve-cds-info.py
+      - 3-Retrieve-cds-info.py
       - --task_dir
       - "{output_dir}"
       - --transcript_info
       - /path/to/transcript_id_info_summary.txt
     output: "{output_dir}/input.codon.txt"
+    required_modules: [pandas, tqdm]
   calm:
-    working_directory: /path/to/TranSyn/feature_extraction
+    working_directory: "{config_dir}"
     command:
       - conda
       - run
@@ -59,17 +62,18 @@ extractors:
       - -n
       - calm
       - python
-      - 1-Local-LLM-RNA-CaLM-Bulk.py
+      - 1-Retrieve-CaLM-Embeddings.py
       - --input_file
       - "{output_dir}/input.codon.txt"
       - --task_dir
       - "{output_dir}"
     output: "{output_dir}/CaLM.pth"
+    required_modules: [torch, calm, pandas, tqdm, lmdb]
 normalization:
-  selected_columns: /path/to/TranSyn/config/reformat_header.info
-  empty_columns: /path/to/TranSyn/config/empty_cols.pkl
-  imputer: /path/to/TranSyn/config/imputer.pkl
-  scaler: /path/to/TranSyn/config/scaler.pkl
+  selected_columns: ../config/reformat_header.info
+  empty_columns: ../config/empty_cols.pkl
+  imputer: ../config/imputer.pkl
+  scaler: ../config/scaler.pkl
   identifier_column: Variant38
   metadata_columns: 3
   gpn_field: gpn_msa

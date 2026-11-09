@@ -1,5 +1,9 @@
-#!/usr/bin/env python3
-"""Tune TranSyn hyperparameters with deterministic cross-validation."""
+"""
+@description: Hyperparameter optimization
+@author: chen ye
+@email: q23101020@stu.ahu.edu.cn
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -22,7 +26,10 @@ from functions.Utils import set_full_deterministic_seed
 
 
 def build_model(trial: optuna.Trial, args: argparse.Namespace, device: torch.device) -> torch.nn.Module:
-    """Construct TranSyn and initialize its source backbones."""
+    """
+    Desc:
+        construct TranSyn and initialize its source backbones
+    """
     bio_hidden = trial.suggest_categorical("bio_hidden", [64, 128, 256])
     dropout = trial.suggest_categorical("dropout_rate", [0.1, 0.3, 0.5])
     head_hidden = trial.suggest_categorical("head_hidden", [64, 128, 256, 512])
@@ -67,6 +74,7 @@ def main() -> None:
 
     def objective(trial: optuna.Trial) -> float:
         set_full_deterministic_seed(args.seed)
+        # parameter search grid
         learning_rate = trial.suggest_float("lr", 1e-5, 1e-2, log=True)
         trade_off = trial.suggest_categorical("trade_off_trsr", [0.1, 0.3, 0.5, 1.0])
         batch_size = trial.suggest_categorical("batch_size", [32, 64])

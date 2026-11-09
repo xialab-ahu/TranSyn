@@ -8,20 +8,20 @@ import re
 from plot_six_signature import BINS, plot_statistics, plot_from_file
 
 TRANSCRIPTS = (
-    PROJECT / "B-feature/00-total-feature-pool/rna_protein_sequence/transcript_id_info_summary.txt"
+    PROJECT / "transcript_id_info_summary.txt"
 )
-MISSENSE = PROJECT / "A-prepare-dataset/b-output/dataset_missense"
-SYNONYMOUS = ROOT / "9_synonymous_dataset/F-final-result/Version1"
+MISSENSE = PROJECT / "/missense_dataset/"
+SYNONYMOUS = ROOT / "/synonymous_dataset/"
 INPUTS = {
     "missense": {
         "benign": MISSENSE
-        / "missense.bn.with_transcript.51936.sanity.check.3.with.codon.info.noDMq.txt",
+        / "missense.bn.txt",
         "pathogenic": MISSENSE
-        / "missense.pt.with_transcript.51936.sanity.check.3.with.codon.info.noDMq.txt",
+        / "missense.pt.txt",
     },
     "synonymous": {
-        "benign": SYNONYMOUS / "train_neg_1181_with_codon_info_flank_with_rept.txt",
-        "pathogenic": SYNONYMOUS / "train_pos_1181_with_codon_info_flank_with_rept.txt",
+        "benign": SYNONYMOUS / "train_neg.txt",
+        "pathogenic": SYNONYMOUS / "train_pos.txt",
     },
 }
 

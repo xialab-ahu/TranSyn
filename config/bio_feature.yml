@@ -1,0 +1,17 @@
+name: bio_feature
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy=2.2.6
+  - pandas=2.2.3
+  - scipy=1.15.2
+  - scikit-learn=1.6.1
+  - joblib=1.5.1
+  - pyyaml=6.0.2
+  - tqdm=4.67.1
+  - biopython=1.85
+  - htslib=1.20
+  - pip

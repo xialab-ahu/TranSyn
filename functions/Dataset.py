@@ -16,64 +16,63 @@ from sklearn.model_selection import train_test_split
 
 # for torch data
 class MyDataset(Dataset): 
-    def __init__(
-        self,
-        data_path: str,
-        label=None,
-        feature_keys: list = None,
-    ):
-    """
-    Desc:
-    	For torch data
-    Args:
-    	data_path, the torch data path
-    	label, provide external label
-    	feature_keys, feature names
-    """
-        self.data = torch.load(data_path)
-        self.label = label
-        self.keys = list(self.data.keys())
-        self.feature_keys = feature_keys
-        self.is_substract = is_substract
+	def __init__(
+		self,
+		data_path: str,
+		label=None,
+		feature_keys: list = None,
+	):
+		"""
+		Desc:
+			For torch data
+		Args:
+			data_path, the torch data path
+			label, provide external label
+			feature_keys, feature names
+		"""
+		self.data = torch.load(data_path)
+		self.label = label
+		self.keys = list(self.data.keys())
+		self.feature_keys = feature_keys
 
-    def __len__(self):
-        return len(self.keys)
+	def __len__(self):
+		return len(self.keys)
 
-    @staticmethod
-    def _to_float_tensor(x):
-        """compatible torch.Tensor / numpy.ndarray / scalar"""
-        if isinstance(x, torch.Tensor):
-            return x.float()
-        if isinstance(x, np.ndarray):
-            return torch.from_numpy(x).float()
-        return torch.tensor(x, dtype=torch.float32)
+	@staticmethod
+	def _to_float_tensor(x):
+		"""compatible torch.Tensor / numpy.ndarray / scalar"""
+		if isinstance(x, torch.Tensor):
+			return x.float()
+		if isinstance(x, np.ndarray):
+			return torch.from_numpy(x).float()
+		return torch.tensor(x, dtype=torch.float32)
 
-    def __getitem__(self, idx):
-        key = self.keys[idx]
-        item = self.data[key]
+	def __getitem__(self, idx):
+		key = self.keys[idx]
+		item = self.data[key]
 
-        # label
-        label = self._to_float_tensor(
-            self.label if self.label is not None else item['label']
-        )
+		# label
+		label = self._to_float_tensor(
+			self.label if self.label is not None else item['label']
+		)
 
-        # features
-        features = {}
-        if self.feature_keys is None:
-            for k, v in item.items():
-                if k != 'label' and isinstance(v, (torch.Tensor, np.ndarray)):
-                    features[k] = self._to_float_tensor(v)
-        else:
-            for k in self.feature_keys:
-                if k not in item:
-                    raise KeyError(f"Feature key '{k}' not found in data item.")
-                features[k] = self._to_float_tensor(item[k])
-        return {
-            'index': idx,
-            'vid': key,
-            **features,
-            'label': label
-        }
+		# features
+		features = {}
+		if self.feature_keys is None:
+			for k, v in item.items():
+				if k != 'label' and isinstance(v, (torch.Tensor, np.ndarray)):
+					features[k] = self._to_float_tensor(v)
+		else:
+			for k in self.feature_keys:
+				if k not in item:
+					raise KeyError(f"Feature key '{k}' not found in data item.")
+				features[k] = self._to_float_tensor(item[k])
+		return {
+			'index': idx,
+			'vid': key,
+			**features,
+			'label': label
+		}
 
 
 class LMDBDataset(Dataset):
@@ -91,7 +90,7 @@ class LMDBDataset(Dataset):
 			For LMDB data
 		Args:
 			lmdb_path: LMDB dir
-			label: provide external label（int/float/tensor）
+			label: provide external label
 			feature_keys: feature names
 			preload: if preload to cache
 			readonly: if read only
@@ -103,9 +102,7 @@ class LMDBDataset(Dataset):
 		self.preload = preload
 		self.readonly = readonly
 		self.lock = lock
-		self.is_substract = is_substract
 
-		# 先读取 keys（仅主进程执行一次）
 		env = lmdb.open(
 			self.lmdb_path,
 			readonly=True,
@@ -160,10 +157,10 @@ class LMDBDataset(Dataset):
 		if self.cache is None:
 			# Avoiding the overhead of starting/commit() every time __getitem__ is called
 			if self.txn is None:
-				 with self.env.begin(write=False) as txn:
-					 v = txn.get(key)
+				with self.env.begin(write=False) as txn:
+					v = txn.get(key)
 			else:
-				 v = self.txn.get(key)
+				v = self.txn.get(key)
 			if v is None:
 				raise KeyError(f"Key {key} not found in LMDB.")
 			# Data deserialization

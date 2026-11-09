@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 @description: plot context-overlap statistics
 @author: chen ye

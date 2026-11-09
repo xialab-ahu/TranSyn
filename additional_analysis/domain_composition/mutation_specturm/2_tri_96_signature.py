@@ -9,19 +9,19 @@ from plot_tri_96 import plot_statistics, plot_from_file
 
 FLANKS = list(product("ATCG", repeat=2))
 
-NONCODING = PROJECT / "A-prepare-dataset/b-output/dataset_noncoding"
-SYNONYMOUS = ROOT / "9_synonymous_dataset/F-final-result/Version1"
+NONCODING = PROJECT / "/noncoding_dataset/"
+SYNONYMOUS = ROOT / "/synonymous_dataset/"
 INPUTS = {
     "noncoding": {
-        "benign": NONCODING / "noncoding.bn.rmSyn.63953.txt",
-        "pathogenic": NONCODING / "noncoding.pt.rmSyn.63947.txt",
+        "benign": NONCODING / "noncoding.bn.txt",
+        "pathogenic": NONCODING / "noncoding.pt.txt",
     },
     "synonymous": {
-        "benign": SYNONYMOUS / "train_neg_1181.txt",
-        "pathogenic": SYNONYMOUS / "train_pos_1181.txt",
+        "benign": SYNONYMOUS / "train_neg.txt",
+        "pathogenic": SYNONYMOUS / "train_pos.txt",
     },
 }
-FASTA_PATH = ROOT / "2_tools/19-bedtools/reference_genome/hg38.fa"
+FASTA_PATH = ROOT / "/reference_genome/hg38.fa"
 
 
 def open_genome(path):
