@@ -1,2 +1,0 @@
-Accuracy	Precision	Recall	F1-score	AUC	AUPR
-0.5504	0.5462	0.5966	0.5703	0.5101	0.5046

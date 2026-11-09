@@ -1,0 +1,76 @@
+extractors:
+  biological:
+    working_directory: /path/to/TranSyn/feature_extraction
+    command:
+      - conda
+      - run
+      - --no-capture-output
+      - -n
+      - drp-psm
+      - python
+      - 1-retrieve-biology.py
+      - --input_file
+      - "{input}"
+      - --task_dir
+      - "{output_dir}"
+      - --resource_config
+      - /path/to/local.biological-resources.yaml
+    output: "{output_dir}/biological.raw.txt"
+  gpn_msa:
+    working_directory: /path/to/TranSyn/feature_extraction
+    command:
+      - conda
+      - run
+      - --no-capture-output
+      - -n
+      - GPNMSA
+      - python
+      - 1-Local-retrieve-GPN-MSA-Bulk.py
+      - --input_file
+      - "{input}"
+      - --task_dir
+      - "{output_dir}"
+      - --model_path
+      - /path/to/downloaded/GPN-MSA/model
+      - --msa_path
+      - /path/to/downloaded/GPN-MSA/89.zarr.zip
+    output: "{output_dir}/GPN_MSA.pth"
+  codon_context:
+    working_directory: /path/to/TranSyn/feature_extraction
+    command:
+      - conda
+      - run
+      - --no-capture-output
+      - -n
+      - calm
+      - python
+      - 2-retrieve-cds-info.py
+      - --task_dir
+      - "{output_dir}"
+      - --transcript_info
+      - /path/to/transcript_id_info_summary.txt
+    output: "{output_dir}/input.codon.txt"
+  calm:
+    working_directory: /path/to/TranSyn/feature_extraction
+    command:
+      - conda
+      - run
+      - --no-capture-output
+      - -n
+      - calm
+      - python
+      - 1-Local-LLM-RNA-CaLM-Bulk.py
+      - --input_file
+      - "{output_dir}/input.codon.txt"
+      - --task_dir
+      - "{output_dir}"
+    output: "{output_dir}/CaLM.pth"
+normalization:
+  selected_columns: /path/to/TranSyn/config/reformat_header.info
+  empty_columns: /path/to/TranSyn/config/empty_cols.pkl
+  imputer: /path/to/TranSyn/config/imputer.pkl
+  scaler: /path/to/TranSyn/config/scaler.pkl
+  identifier_column: Variant38
+  metadata_columns: 3
+  gpn_field: gpn_msa
+  calm_field: calm_diff

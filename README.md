@@ -1,63 +1,95 @@
 # TranSyn
 
-## 0 🌐 Access TranSyn Prediction
+> 💻 Computational method: TranSyn is a transfer-learning framework for prioritizing potentially deleterious synonymous single-nucleotide variants. This reposority covers input validation, source-domain preprocessing, feature extraction, inference, evaluation, and related analyses in the manuscript. 
 
-We provide genome-wide predictions on actionable genes using TranSyn and a web server to visualize the results. Access it here: [TranSyn Web Server](https://bioinfo.ahu.edu.cn/transyn/).
+![workflow](./asset/Framework.jpg)
 
-![Figure1](asset/WebSerber-header.jpg)
+> 🌐 Online web server: Genome-wide scores for actionable genes, as well as online prediction, are also available at the [TranSyn web server](https://bioinfo.ahu.edu.cn/TranSyn).
 
-## 1 📢 Introduction
+![web_front_img](./asset/WebSerber-header.jpg)
 
-**TranSyn** is a deep transfer learning framework for predicting the functional impact of synonymous variants.  
+# Scope and supported inputs
 
-Although synonymous variants do not change the amino acid sequence, they can influence splicing, translation efficiency, and protein structure, potentially contributing to disease. Accurate prediction remains challenging due to limited labeled pathogenic samples.  
+- Genome assembly: GRCh38/hg38 only; coordinates are one-based.
+- Variant type: biallelic synonymous SNVs with `A/C/G/T` REF and ALT alleles.
+- Chromosomes: 1–22, X, and Y.
+- Required columns: `#CHROM`, `POS`, `REF`, and `ALT` in a tab-separated file.
+- Unsupported: indels, multi-allelic rows, symbolic/non-ACGT alleles, duplicate
+  rows, other assemblies, and reference-allele mismatches.
 
-TranSyn addresses this by integrating:
+> Note: TranSyn is a computational prioritization model. Its score is NOT a clinical classification and should NOT be used as the sole basis for patient decisions.
 
-- Deep representations from foundation models pretrained on noncoding and missense variants  
-- Biologically informed handcrafted features  
-
-Experiments demonstrate that TranSyn achieves state-of-the-art performance, effectively transferring knowledge from related variant types and showing particularly strong gains under small-sample conditions. Genome-wide inference on actionable genes further highlights potential mechanisms of synonymous variant pathogenicity.
-
-![Figure1](asset/Framework.jpg)
-
----
-
-## 2 🧱 Installation
-
-Create the conda environment:
+# Installation and external models
 
 ```bash
 conda env create -f environment.yml
 conda activate transyn
 ```
 
-## 3 📈 Reproducibility
+Inference additionally requires independently installed `GPN-MSA` and `CaLM`
+environments.
 
-We provide instructions to reproduce all figures and tables from the paper.
+- GPN-MSA: https://github.com/songlab-cal/gpn
+- CaLM: https://github.com/oxpig/CaLM
 
-1. **Section II:** Comparison with other VEPs | `Figure 2`
-   1. `main.py`: Obtain the best model. Run directly: `python main.py`.
-   2. Result-section-II.ipynb: Compare with other VEPs.
-2. **Section III:** Improvement from transfer knowledge | `Figure 3`
-   1. `main.py`: Sample efficiency experiments.
-   2. `layer_wise.py`: Layer-wise transfer experiment. Run directly: `python layer_wise.py`.
-   3. `Result-section-III-NearBy-Source.ipynb`: Re-select source domains and evaluate improvement.
-   4. `Result-section-III.ipynb`: Result visualization.
-3. **Section IV:** Contribution from foundation models | `Figure 4`
-   1. `pretrain.py`: Pretraining with one-hot features and deep representations.
-   2. `finetune.py`: Fine-tuning with one-hot features and deep representations.
-   3. `ablation.py`: Ablation experiments. Run directly: `python ablation.py`.
-   4. `zeroshot.py`: Zero-shot prediction using foundation models.
-   5. 4. `Result-section-IV.ipynb`: Result visualization.
-4. **Section V:** Inference on actionable genes | `Figure 5`
-   1. `Result-section-V.ipynb`: Analysis and visualization.
+Recommended hardware:
+- Linux workstation with 16 GB RAM.
+- NVIDIA GPU with at least 12 GB VRAM.
+
+# Complete prediction workflow
+
+1. Input preparation: prepare a GRCh38/hg38 TSV and validate its alleles against the same GRCh38 FASTA used by the feature extractors.
+2. Feature extraction: Generate biological, GPN-MSA, and CaLM features in their configured environments.
+3. Impute and scale: Impute biological missing values, and apply the scaler.
+4. Merge and predict: Merge modalities by `Variant38`, predict, and inspect skipped records.
+5. Interpret: the `TranSyn_score` evaluates the probability of the deleterious class, with larger values indicate higher likelihood to be pathogenic.
+
+One-command evaluation:
+
+```bash
+bash scripts/run_evaluation.sh \
+  example/input.grch38.tsv /path/to/GRCh38.fa local.pipeline.yaml \
+  model_weight/model.pt config/config.yaml work/example
+```
+
+A successful run prints `PASS: 1 unique GRCh38 biallelic SNVs` and produces `work/example/predictions.tsv` with the schema shown in `example/expected_output.tsv`.
+
+# Quality control and troubleshooting
+
+| Check or symptom | Expected action |
+|---|---|
+| REF does not match FASTA | Confirm GRCh38, contig naming, and one-based POS; do not swap REF/ALT automatically. |
+| Variant is absent from output | Inspect `features.pth.skipped.tsv` for a missing GPN-MSA or CaLM representation. |
+| Biological feature columns differ | Use the released `header.selected.info`; column order is part of the model. |
+| Score changes between machines | Check model/scaler checksums, package versions, device precision, and external-model versions. |
+| CUDA out of memory | Reduce `--batch-size`; run each foundation model in its own environment/process. |
+| Empty output | Confirm input QC passed and every external stage produced a non-empty configured output. |
 
 
-## 4 🧾 Citation
+# Licensed data and preprocessing
+
+1. HGMD datasets are not included. Users with access can reproduce noncoding or missense source-domain preparation with `preprocess/prepare_source_domains.py`; see `preprocess/README.md`.
+
+2. Random seeds for reproduction are explicit. Training and Optuna default to seed 42; the Optuna script also seeds K-fold splitting and DataLoader shuffling. See `optuna/README.md` for a complete command.
+
+# Manuscript figures and additional analyses
+
+- Figure 2: train/evaluate with `main.py`, then run `Result-section-II.ipynb`.
+- Figure 3: run `main.py`, `layer_wise.py`, and the two Section III notebooks.
+- Figure 4: run `pretrain.py`, `finetune.py`, `ablation.py`, `zeroshot.py`, and
+  `Result-section-IV.ipynb`.
+- Figure 5: run `Result-section-V.ipynb` using the released inference output.
+- Domain-composition and label-shuffle controls are under `additional_analysis/`;
+  each subdirectory documents its inputs and outputs.
+
+# Output contract
+
+The `predictions.tsv` file contains:
+
+- `Variant38`: `CHROM_POS_REF/ALT` on GRCh38.
+- `TranSyn_score`: floating-point deleterious-class probability in `[0, 1]`.
+
+
+# Citation and contact
 
 > In preparation.
-
-## 5 📩 Contact
-
-> For questions or issues, please open an `Issue` in this repository.

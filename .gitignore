@@ -1,0 +1,6 @@
+local*.yaml
+work/
+*.log
+__pycache__/
+.pytest_cache/
+data/

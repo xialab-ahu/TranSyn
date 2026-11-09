@@ -1,0 +1,11 @@
+synmall_tabix_script: /path/to/SynMall/2-Run-tabix.py
+silva_script: /path/to/SilVA/1-annotate.py
+gdi_path: /path/to/gdi_gc.txt
+gene_meta_path: /path/to/gene_information_with_cds_aa.txt
+gene_annotation_path: /path/to/Genes.annotation.assembled.txt
+original_header: /path/to/original_header.info
+selected_header: /path/to/reformat_header.info
+canonical_transcripts: /path/to/Canonical_transcript.txt
+preprocessing_objects: /path/to/bio_processed
+liftover_executable: /path/to/liftOver
+hg38_to_hg19_chain: /path/to/hg38ToHg19.over.chain.gz
