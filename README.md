@@ -4,7 +4,7 @@
 
 ![workflow](./asset/Model-Framework.jpg)
 
-> 🌐 **Online web server:** Precomputed genome-wide scores for actionable genes, as well as online prediction, are available at the [TranSyn web server](https://bioinfo.ahu.edu.cn/TranSyn).
+> 🌐 **Online web server:** Precomputed genome-wide scores for actionable genes, as well as online prediction, are available at the [TranSyn web server](https://bioinfo.ahu.edu.cn/transyn).
 
 ![web_front_img](./asset/WebServer-Header.jpg)
 
