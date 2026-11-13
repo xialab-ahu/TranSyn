@@ -1,8 +1,5 @@
 # Context-overlap analysis
 
-This directory contains code, tests, and usage instructions only. It does not
-redistribute source variants, derived statistics, figures, or logs.
-
 - `calculate_context_overlap.py` calculates directional binary overlap between
   129-bp contexts and writes per-variant audit tables.
 - `calculate_overlap_extent.py` calculates the maximum overlap length for every
@@ -12,8 +9,7 @@ redistribute source variants, derived statistics, figures, or logs.
   duplicate sites, directional denominators, and combined-label behavior.
 
 Each context is `[POS - 64, POS + 64]`. Variants are deduplicated by chromosome,
-position, REF, and ALT. Combined groups are formed by union and recalculated;
-group percentages are never averaged.
+position, REF, and ALT.
 
 Provide all six user-owned input files explicitly:
 

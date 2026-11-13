@@ -1,3 +1,9 @@
+"""
+@description: plot the distribution of source-domain and target-domain variant across the chromosomes
+@author: chen ye
+@email: q23101020@stu.ahu.edu.cn
+"""
+
 library(ggplot2)
 library(ggridges)
 library(dplyr)
@@ -15,19 +21,19 @@ read_variant_file <- function(path, label) {
 
 # ---------- 🔈 The path of variant file, some of the data cannot be re-distribution, please contact me if you want to use them ---------- 
 # benign
-# df_syn       <- read_variant_file("spatial_vis/synonymous.bn.txt", "Synonymous")
-# df_missense  <- read_variant_file("spatial_vis/missense.bn.txt", "Missense")
-# df_noncoding <- read_variant_file("spatial_vis/noncoding.bn.txt", "Noncoding")
+# df_syn       <- read_variant_file("./spatial_vis/synonymous.bn.txt", "Synonymous")
+# df_missense  <- read_variant_file("./spatial_vis/missense.bn.txt", "Missense")
+# df_noncoding <- read_variant_file("./spatial_vis/noncoding.bn.txt", "Noncoding")
 
 # pathogenic
-# df_syn       <- read_variant_file("spatial_vis/synonymous.pt.txt", "Synonymous")
-# df_missense  <- read_variant_file("spatial_vis/missense.pt.txt", "Missense")
-# df_noncoding <- read_variant_file("spatial_vis/noncoding.pt.txt", "Noncoding")
+# df_syn       <- read_variant_file("./spatial_vis/synonymous.pt.txt", "Synonymous")
+# df_missense  <- read_variant_file("./spatial_vis/missense.pt.txt", "Missense")
+# df_noncoding <- read_variant_file("./spatial_vis/noncoding.pt.txt", "Noncoding")
 
 # all
-df_syn       <- read_variant_file("spatial_vis/synonymous.txt", "Synonymous")
-df_missense  <- read_variant_file("spatial_vis/missense.txt", "Missense")
-df_noncoding <- read_variant_file("spatial_vis/noncoding.txt", "Noncoding")
+df_syn       <- read_variant_file("./spatial_vis/synonymous.txt", "Synonymous")
+df_missense  <- read_variant_file("./spatial_vis/missense.txt", "Missense")
+df_noncoding <- read_variant_file("./spatial_vis/noncoding.txt", "Noncoding")
 df_all <- bind_rows(df_syn, df_missense, df_noncoding)
 
 
@@ -113,6 +119,6 @@ dir.create("./plot_result", recursive = TRUE, showWarnings = FALSE)
 # ggsave("./plot_result/variant_distribution.pt.pdf", plot = p, width = 6.5, height = 7, dpi = 300)
 # ggsave("./plot_result/variant_distribution.pt.jpg", plot = p, width = 6.5, height = 7, dpi = 300)
 
-# all
+# combined
 ggsave("./plot_result/variant_distribution.pdf", plot = p, width = 6.5, height = 7, dpi = 300)
 ggsave("./plot_result/variant_distribution.jpg", plot = p, width = 6.5, height = 7, dpi = 300)
